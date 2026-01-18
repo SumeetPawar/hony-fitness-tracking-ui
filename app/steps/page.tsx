@@ -3,15 +3,15 @@
 import { useState, useMemo } from 'react';
 
 // Helper functions
-function clamp(n, min, max) {
+function clamp(n: number, min: number, max: number): number {
   return Math.max(min, Math.min(max, n));
 }
 
-function formatNumber(n) {
-  return Number(n || 0).toLocaleString('en-US');
+function formatNumber(n: number): string {
+  return Number(n || 0).toLocaleString("en-IN");
 }
 
-function buildAiSummary(steps, goal, hasSteps) {
+function buildAiSummary(steps: number, goal: number, hasSteps: boolean) {
   const stepComparisons = [
     { steps: 2000, text: '🗼 You walked the height of the Eiffel Tower!' },
     { steps: 5000, text: '🏟️ You walked around a football field 10 times!' },
@@ -143,7 +143,7 @@ export default function StepsTracker() {
 
   const remainingToday = Math.max(goalToday - viewSteps, 0);
 
-  const onSelectDay = (day, idx) => {
+  const onSelectDay = (day: any, idx: number) => {
     // Disable selecting future days (after today) if no data
     const isFuture = idx > todayIdx;
     const isEmptyFuture = isFuture && (!day.steps || day.steps === 0);
@@ -175,12 +175,12 @@ export default function StepsTracker() {
   const weekProgress = (stepsWeek / goalWeek) * 100;
   const dayProgress = (viewSteps / goalToday) * 100;
 
-  const handleTouchStart = (e) => {
+  const handleTouchStart = (e: React.TouchEvent) => {
     setTouchStart(e.targetTouches[0].clientX);
     setTouchEnd(0);
   };
 
-  const handleTouchMove = (e) => {
+  const handleTouchMove = (e: React.TouchEvent) => {
     setTouchEnd(e.targetTouches[0].clientX);
   };
 

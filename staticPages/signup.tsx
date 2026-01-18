@@ -1,29 +1,13 @@
-'use client';
-
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 export default function SignupPage() {
-  const [name, setName] = useState<string>('');
-  const [email, setEmail] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
-  const [confirmPassword, setConfirmPassword] = useState<string>('');
-  const [error, setError] = useState<string>('');
-  const [currentWord, setCurrentWord] = useState<string>('Fitness');
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [error, setError] = useState('');
 
-  // Animated word loop
-  useEffect(() => {
-    const words = ['Fitness', 'Connect', 'Social', 'Insights'];
-    let index = 0;
-    
-    const interval = setInterval(() => {
-      index = (index + 1) % words.length;
-      setCurrentWord(words[index]);
-    }, 2000); // Change every 2 seconds
-
-    return () => clearInterval(interval);
-  }, []);
-
-  const handleSignup = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSignup = (e: React.FormEvent) => {
     e.preventDefault();
     
     // Basic validation
@@ -52,7 +36,7 @@ export default function SignupPage() {
     alert('Signup successful! (In real app, navigate to dashboard)');
   };
 
-  const handleLoginClick = (): void => {
+  const handleLoginClick = () => {
     alert('Navigate to login page (In real app, use router)');
   };
 
@@ -60,87 +44,58 @@ export default function SignupPage() {
     <div style={{ 
       minHeight: '100vh', 
       width: '100%', 
-      backgroundColor: '#fafbfc',
-      backgroundImage: 'radial-gradient(ellipse 80% 50% at 50% -20%, rgba(124, 58, 237, 0.04), transparent)',
+      backgroundColor: '#0a0a1a',
+      backgroundImage: 'radial-gradient(ellipse 120% 100% at 50% 0%, rgba(124, 58, 237, 0.14), transparent 70%), radial-gradient(ellipse 100% 100% at 100%, rgba(139, 92, 246, 0.11), transparent 60%), radial-gradient(ellipse 100% 100% at 0% 100%, rgba(109, 40, 217, 0.09), transparent 60%), linear-gradient(180deg, #0a0a1a 0%, #0f1419 50%, #0a1114 100%)',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
       padding: '24px'
     }}>
-      <div style={{ width: '100%', maxWidth: '440px' }}>
+      <div style={{ width: '100%', maxWidth: '400px' }}>
         
         {/* Logo/Title */}
-        <div style={{ textAlign: 'center', marginBottom: '48px' }}>
+        <div style={{ textAlign: 'center', marginBottom: '40px' }}>
           <h1 style={{ 
-            fontSize: '40px', 
-            fontWeight: '700', 
-            color: '#0f172a', 
-            marginBottom: '0',
-            letterSpacing: '-0.03em',
-            lineHeight: '1'
+            fontSize: '36px', 
+            fontWeight: 'bold', 
+            color: 'white', 
+            marginBottom: '8px',
+            letterSpacing: '-0.025em'
           }}>
-            GES <span 
-              key={currentWord}
-              style={{ 
-                background: 'linear-gradient(135deg, #7c3aed 0%, #a855f7 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-                animation: 'fadeIn 0.5s ease-in-out',
-                display: 'inline-block'
-              }}
-            >
-              {currentWord}
-            </span>
+            Fitness<span style={{ 
+              background: 'linear-gradient(to right, #a78bfa, #a855f7)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text'
+            }}>Track</span>
           </h1>
-          
-          {/* CSS Animation */}
-          <style>{`
-            @keyframes fadeIn {
-              from {
-                opacity: 0;
-                transform: translateY(-10px);
-              }
-              to {
-                opacity: 1;
-                transform: translateY(0);
-              }
-            }
-          `}</style>
+          <p style={{ fontSize: '14px', color: '#a1a1aa' }}>Start your fitness journey today</p>
         </div>
 
         {/* Signup Card */}
         <div style={{
-          background: '#ffffff',
-          padding: '40px',
-          borderRadius: '20px',
-          border: '1px solid #e2e8f0',
-          boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)'
+          backdropFilter: 'blur(16px)',
+          background: 'linear-gradient(to bottom right, rgba(124, 58, 237, 0.10), rgba(139, 92, 246, 0.08), rgba(109, 40, 217, 0.10))',
+          padding: '32px',
+          borderRadius: '16px',
+          border: '1px solid rgba(167, 139, 250, 0.20)',
+          boxShadow: '0 25px 50px -12px rgba(139, 92, 246, 0.20)'
         }}>
           
-          <h2 style={{ 
-            fontSize: '24px', 
-            fontWeight: '600', 
-            color: '#0f172a', 
-            marginBottom: '10px',
-            letterSpacing: '-0.01em'
-          }}>
-            Create account
+          <h2 style={{ fontSize: '20px', fontWeight: 'bold', color: 'white', marginBottom: '24px' }}>
+            Create Account
           </h2>
-          <p style={{ fontSize: '15px', color: '#64748b', marginBottom: '32px' }}>
-            Get started with your fitness journey
-          </p>
 
-          <form onSubmit={handleSignup} style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+          <form onSubmit={handleSignup} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
             
             {/* Name Input */}
             <div>
               <label htmlFor="name" style={{ 
                 display: 'block', 
-                fontSize: '15px', 
-                fontWeight: '400', 
-                color: '#0f172a', 
-                marginBottom: '10px' 
+                fontSize: '14px', 
+                fontWeight: '500', 
+                color: 'rgba(255,255,255,0.90)', 
+                marginBottom: '8px' 
               }}>
                 Full Name
               </label>
@@ -157,11 +112,11 @@ export default function SignupPage() {
                   width: '100%',
                   borderRadius: '12px',
                   backdropFilter: 'blur(16px)',
-                  background: '#f8fafc',
-                  border: '1px solid #e2e8f0',
-                  padding: '14px 16px',
-                  fontSize: '15px',
-                  color: '#0f172a',
+                  background: 'rgba(255,255,255,0.05)',
+                  border: '1px solid rgba(255,255,255,0.10)',
+                  padding: '12px 16px',
+                  fontSize: '14px',
+                  color: 'rgba(255,255,255,0.95)',
                   outline: 'none',
                   transition: 'all 0.2s',
                   boxSizing: 'border-box'
@@ -181,10 +136,10 @@ export default function SignupPage() {
             <div>
               <label htmlFor="email" style={{ 
                 display: 'block', 
-                fontSize: '15px', 
-                fontWeight: '400', 
-                color: '#0f172a', 
-                marginBottom: '10px' 
+                fontSize: '14px', 
+                fontWeight: '500', 
+                color: 'rgba(255,255,255,0.90)', 
+                marginBottom: '8px' 
               }}>
                 Email
               </label>
@@ -201,11 +156,11 @@ export default function SignupPage() {
                   width: '100%',
                   borderRadius: '12px',
                   backdropFilter: 'blur(16px)',
-                  background: '#f8fafc',
-                  border: '1px solid #e2e8f0',
-                  padding: '14px 16px',
-                  fontSize: '15px',
-                  color: '#0f172a',
+                  background: 'rgba(255,255,255,0.05)',
+                  border: '1px solid rgba(255,255,255,0.10)',
+                  padding: '12px 16px',
+                  fontSize: '14px',
+                  color: 'rgba(255,255,255,0.95)',
                   outline: 'none',
                   transition: 'all 0.2s',
                   boxSizing: 'border-box'
@@ -225,10 +180,10 @@ export default function SignupPage() {
             <div>
               <label htmlFor="password" style={{ 
                 display: 'block', 
-                fontSize: '15px', 
-                fontWeight: '400', 
-                color: '#0f172a', 
-                marginBottom: '10px' 
+                fontSize: '14px', 
+                fontWeight: '500', 
+                color: 'rgba(255,255,255,0.90)', 
+                marginBottom: '8px' 
               }}>
                 Password
               </label>
@@ -245,11 +200,11 @@ export default function SignupPage() {
                   width: '100%',
                   borderRadius: '12px',
                   backdropFilter: 'blur(16px)',
-                  background: '#f8fafc',
-                  border: '1px solid #e2e8f0',
-                  padding: '14px 16px',
-                  fontSize: '15px',
-                  color: '#0f172a',
+                  background: 'rgba(255,255,255,0.05)',
+                  border: '1px solid rgba(255,255,255,0.10)',
+                  padding: '12px 16px',
+                  fontSize: '14px',
+                  color: 'rgba(255,255,255,0.95)',
                   outline: 'none',
                   transition: 'all 0.2s',
                   boxSizing: 'border-box'
@@ -269,10 +224,10 @@ export default function SignupPage() {
             <div>
               <label htmlFor="confirmPassword" style={{ 
                 display: 'block', 
-                fontSize: '15px', 
-                fontWeight: '400', 
-                color: '#0f172a', 
-                marginBottom: '10px' 
+                fontSize: '14px', 
+                fontWeight: '500', 
+                color: 'rgba(255,255,255,0.90)', 
+                marginBottom: '8px' 
               }}>
                 Confirm Password
               </label>
@@ -289,11 +244,11 @@ export default function SignupPage() {
                   width: '100%',
                   borderRadius: '12px',
                   backdropFilter: 'blur(16px)',
-                  background: '#f8fafc',
-                  border: '1px solid #e2e8f0',
-                  padding: '14px 16px',
-                  fontSize: '15px',
-                  color: '#0f172a',
+                  background: 'rgba(255,255,255,0.05)',
+                  border: '1px solid rgba(255,255,255,0.10)',
+                  padding: '12px 16px',
+                  fontSize: '14px',
+                  color: 'rgba(255,255,255,0.95)',
                   outline: 'none',
                   transition: 'all 0.2s',
                   boxSizing: 'border-box'
@@ -312,7 +267,7 @@ export default function SignupPage() {
             {/* Error Message */}
             {error && (
               <div style={{
-                fontSize: '15px',
+                fontSize: '14px',
                 color: '#f87171',
                 background: 'rgba(248, 113, 113, 0.10)',
                 border: '1px solid rgba(248, 113, 113, 0.20)',
@@ -330,12 +285,12 @@ export default function SignupPage() {
                 width: '100%',
                 height: '48px',
                 borderRadius: '12px',
-                fontSize: '15px',
+                fontSize: '14px',
                 fontWeight: 'bold',
-                background: 'linear-gradient(135deg, #7c3aed 0%, #a855f7 100%)',
+                background: 'linear-gradient(to right, #7c3aed, #9333ea, #6d28d9)',
                 color: 'white',
                 border: '1px solid rgba(255,255,255,0.20)',
-                boxShadow: '0 4px 12px 0 rgba(124, 58, 237, 0.25)',
+                boxShadow: '0 10px 15px -3px rgba(139, 92, 246, 0.35)',
                 cursor: 'pointer',
                 transition: 'all 0.2s'
               }}
@@ -358,15 +313,15 @@ export default function SignupPage() {
           </form>
 
           {/* Divider */}
-          <div style={{ position: 'relative', margin: '32px 0' }}>
+          <div style={{ position: 'relative', margin: '24px 0' }}>
             <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center' }}>
-              <div style={{ width: '100%', borderTop: '1px solid #e5e7eb' }}></div>
+              <div style={{ width: '100%', borderTop: '1px solid rgba(255,255,255,0.10)' }}></div>
             </div>
-            <div style={{ position: 'relative', display: 'flex', justifyContent: 'center', fontSize: '13px' }}>
+            <div style={{ position: 'relative', display: 'flex', justifyContent: 'center', fontSize: '12px' }}>
               <span style={{ 
-                padding: '0 16px', 
-                background: 'rgba(255, 255, 255, 0.98)',
-                color: '#64748b' 
+                padding: '0 12px', 
+                background: 'linear-gradient(to bottom right, rgba(124, 58, 237, 0.10), rgba(139, 92, 246, 0.08), rgba(109, 40, 217, 0.10))',
+                color: '#a1a1aa' 
               }}>
                 Already have an account?
               </span>
@@ -381,11 +336,11 @@ export default function SignupPage() {
               width: '100%',
               height: '48px',
               borderRadius: '12px',
-              fontSize: '15px',
+              fontSize: '14px',
               fontWeight: '600',
-              background: '#f8fafc',
-              color: '#0f172a',
-              border: '1px solid #e2e8f0',
+              background: 'rgba(255,255,255,0.05)',
+              color: 'rgba(255,255,255,0.90)',
+              border: '1px solid rgba(255,255,255,0.10)',
               cursor: 'pointer',
               transition: 'all 0.2s'
             }}
@@ -410,7 +365,7 @@ export default function SignupPage() {
         </div>
 
         {/* Footer */}
-        <p style={{ textAlign: 'center', fontSize: '13px', color: '#64748b', marginTop: '32px' }}>
+        <p style={{ textAlign: 'center', fontSize: '12px', color: '#71717a', marginTop: '24px' }}>
           By creating an account, you agree to our Terms & Privacy Policy
         </p>
 

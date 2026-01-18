@@ -92,11 +92,11 @@ export default function WeeklyChallenge() {
 
                 {/* Goal Cards */}
                 <div className="space-y-3 mb-5">
-                    {goals.map((goal) => {
+                    {goals.map((goal : any) => {
                         const isSelected = selectedGoal === goal.id;
                         
                         // Color mapping for clean accent colors
-                        const accentColors = {
+                        const accentColors : any = {
                             'from-emerald-400 to-green-500': { border: 'border-emerald-500/30', bg: 'bg-emerald-500/5', text: 'text-emerald-400', gradient: 'from-emerald-500 to-green-500' },
                             'from-blue-400 to-blue-500': { border: 'border-blue-500/30', bg: 'bg-blue-500/5', text: 'text-blue-400', gradient: 'from-blue-500 to-blue-600' },
                             'from-amber-400 to-orange-500': { border: 'border-amber-500/30', bg: 'bg-amber-500/5', text: 'text-amber-400', gradient: 'from-amber-500 to-orange-500' },

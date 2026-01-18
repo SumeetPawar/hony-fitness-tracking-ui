@@ -299,18 +299,16 @@ export default function Leaderboard() {
                           {activeDays} of 7 active days
                         </span>
                         {/* Trend Indicator */}
-                        {trend !== 0 && (
-                          <span style={{ 
-                            fontSize: '11px', 
-                            color: '#94a3b8',
-                            fontWeight: '500',
-                            display: 'flex',
-                            alignItems: 'center',
-                            gap: '2px'
-                          }}>
-                            {trend > 0 ? '↑' : '↓'} {Math.abs(trend)}% from last week
-                          </span>
-                        )}
+                        <span style={{ 
+                          fontSize: '11px', 
+                          color: '#94a3b8',
+                          fontWeight: '500',
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '2px'
+                        }}>
+                          {trend > 0 ? '↑' : '↓'} {Math.abs(trend)}% from last week
+                        </span>
                       </div>
                     </div>
 

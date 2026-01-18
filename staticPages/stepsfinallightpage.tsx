@@ -425,7 +425,7 @@ export default function StepsTracker() {
 
         {/* Week Ticks */}
         <div style={{ marginBottom: '24px' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '12px', paddingX: '4px' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '12px', paddingLeft: '4px', paddingRight: '4px' }}>
             <span style={{ fontSize: '12px', color: '#94a3b8', fontWeight: '600' }}>This Week</span>
             <span style={{ fontSize: '11px', color: '#94a3b8' }}>🔥 {streak} day streak</span>
           </div>
